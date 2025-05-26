@@ -4,6 +4,91 @@
 
 ![Laravel drag and drop menu](https://raw.githubusercontent.com/nguyendachuy/laravel-menu/master/screenshot.png)
 
+## Important Notice: Major Upgrade Available
+
+We're excited to announce a major upgrade of Laravel Drag and Drop Menu Builder available on the `upgrade-version` branch. This version adds significant new features and improvements, especially comprehensive multilingual support.
+
+### New Features and Improvements
+
+- **Complete Multilingual Support**: User interface and system messages translated into multiple languages (currently English and Vietnamese)
+- **Migration from Bootstrap to Tailwind CSS**: Completely redesigned interface with Tailwind CSS, providing a more modern and flexible experience
+- **Mega Menu Support**: Create mega menus with custom content
+- **Advanced JavaScript Integration**: Translation system integrated into JavaScript, allowing messages to be displayed in the user's language
+- **Improved UX/UI**: Modern interface with intuitive drag-and-drop feedback
+- **Performance Optimization**: Improved performance with caching system and query optimization
+- **Robust Error Handling**: Comprehensive validation and error recovery system
+- **Critical Bug Fixes**: Fixed issues including Menu Name and Menu Class not updating when clicking Update Menu
+
+### How to Use the `upgrade-version` Branch
+
+#### Option 1: Direct Git Checkout
+
+```bash
+# Clone repository (if you don't have it)
+git clone https://github.com/nguyendachuy/laravel-menu.git
+
+# Switch to upgrade-version branch
+git checkout upgrade-version
+
+# Install dependencies
+composer install
+```
+
+#### Option 2: Using Composer (Recommended for Projects)
+
+Update your `composer.json` file to use the upgrade-version branch:
+
+```json
+{
+    "require": {
+        "nguyendachuy/laravel-menu": "dev-upgrade-version"
+    }
+}
+```
+
+Then run:
+
+```bash
+composer update nguyendachuy/laravel-menu
+```
+
+### Database Updates
+
+The new version adds columns for the Mega Menu feature. Run migrations to update your database structure:
+
+```bash
+php artisan migrate
+```
+
+The migration will add the following columns to the `menu_items` table:
+- `is_mega_menu` (boolean): Determines if an item is a mega menu
+- `mega_menu_content` (text): Stores the HTML content of the mega menu
+
+### Updating Resources
+
+The new version includes many changes to config, views, and public files. Run the following command to update:
+
+```bash
+# Publish all resources
+php artisan vendor:publish --provider="NguyenHuy\Menu\Providers\MenuServiceProvider" --force
+
+# Or publish specific resource types
+php artisan vendor:publish --tag=laravel-menu-config --force
+php artisan vendor:publish --tag=laravel-menu-views --force
+php artisan vendor:publish --tag=laravel-menu-assets --force
+php artisan vendor:publish --tag=laravel-menu-translations --force
+```
+
+**Important Note**: Using `--force` will overwrite any customizations you've made. If you've customized files, back them up before running these commands.
+
+### Important Note
+
+The `upgrade-version` branch has not yet been merged into `master` to avoid affecting current users. We encourage you to test this branch in a development environment before applying it to production projects.
+
+Feedback and contributions are welcome to help us improve this package before the official release.
+
+Please refer to the README.md in the `upgrade-version` branch for complete details on new features and usage instructions.
+
 ### Installation
 
 1. Run
