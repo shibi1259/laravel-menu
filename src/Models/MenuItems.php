@@ -45,4 +45,9 @@ class MenuItems extends Model
     {
         return $this->hasMany('NguyenHuy\Menu\Models\MenuItems', 'parent')->orderBy('sort', 'ASC');
     }
+
+    public function children()
+    {
+        return $this->child()->with('children');
+    }
 }
